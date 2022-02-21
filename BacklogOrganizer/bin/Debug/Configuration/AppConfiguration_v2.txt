@@ -1,0 +1,1 @@
+{"RefreshInterval":5,"PlayReminderSound":true,"ReminderSound":"beeps.mp3","ReminderSnoozeDuration":5,"WorkItemNotUpdatedDuration":24,"ShowIterationTab":true,"ShowTeamMembersTab":true}

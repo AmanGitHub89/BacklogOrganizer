@@ -1,0 +1,67 @@
+﻿<Window x:Class="BacklogOrganizer.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:userControls="clr-namespace:BacklogOrganizer.UserControls"
+        xmlns:dataGrids="clr-namespace:BacklogOrganizer.UserControls.DataGrids"
+        xmlns:tabs="clr-namespace:BacklogOrganizer.UserControls.Tabs"
+        mc:Ignorable="d"
+        Loaded="MainWindow_OnLoaded"
+        Activated="MainWindow_OnActivated"
+        Closing="MainWindow_OnClosing"
+        Title="Backlog Organizer" Height="600" Width="1000">
+    <Grid Background="LightGray">
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DockPanel Name="NewVersionAvailableInfoPanel" Margin="5,5,5,0" Background="Yellow" Dock="Top">
+                <Label Content="New version of the Backlog Analyzer is available. Please update from Team tool under MiDevTools." VerticalAlignment="Center"></Label>
+            </DockPanel>
+            <DockPanel Name="ErrorInfoPanel" Margin="5,5,5,0" Background="Beige" Dock="Top">
+                <Label Name="ErrorInfoPanelLabel" Content="Loading TFS projects..." VerticalAlignment="Center"></Label>
+                <Button Name="ErrorInfoPanelButton" Visibility="Collapsed" Click="ErrorInfoPanelButton_OnClick" HorizontalAlignment="Right" Margin="0,5,5,5" Padding="10,5,10,5" Content="Reload"></Button>
+            </DockPanel>
+            <DockPanel Dock="Top" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="40" Margin="5,5,5,0" Background="DarkGray">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+                    <ComboBox Name="ProjectCatalogComboBox" SelectionChanged="ProjectCatalogComboBox_OnSelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Margin="5,0,0,0"></ComboBox>
+                    <ComboBox Name="ProjectTypeComboBox" SelectionChanged="ProjectTypeComboBox_OnSelectionChanged" HorizontalAlignment="Left" VerticalAlignment="Center" Width="160" Margin="5,0,0,0"></ComboBox>
+                    <userControls:ThreeDButton x:Name="RefreshButton" ToolTip="Refresh your work items" VerticalAlignment="Center" Margin="5,0,5,0" Click="RefreshButton_OnClick">
+                        <Image Source="../Resources/RefreshIcon.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                </StackPanel>
+                <DockPanel HorizontalAlignment="Right">
+                    <userControls:ThreeDButton x:Name="AboutBacklogOrganizerButton" ToolTip="About Backlog Organizer" VerticalAlignment="Top" Margin="0,5,35,0" Click="AboutBacklogOrganizerButton_OnClick">
+                        <Image Source="../Resources/InformationIcon.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                    <userControls:ThreeDButton x:Name="SetReminderButton" ToolTip="Set reminder" VerticalAlignment="Top" Margin="0,5,35,0" Click="SetReminderButton_OnClick">
+                        <Image Source="../Resources/ReminderIcon.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                    <userControls:ThreeDButton x:Name="CollapseAllButton" ToolTip="Collapse all" VerticalAlignment="Top" Margin="0,5,15,0" Click="CollapseAllButton_OnClick">
+                        <Image Source="../Resources/CollapseAll.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                    <userControls:ThreeDButton x:Name="AddTaskButton" IsEnabled="False" ToolTip="Add Task" VerticalAlignment="Center" Margin="0,0,35,0" Click="AddTaskButton_OnClick">
+                        <Image Source="../Resources/TFSIcon.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                    <userControls:ThreeDButton x:Name="SettingsButton" ToolTip="Settings" VerticalAlignment="Center" Margin="5,0,5,0" Click="SettingsButton_OnClick">
+                        <Image Source="../Resources/SettingsIcon.png" Margin="2"></Image>
+                    </userControls:ThreeDButton>
+                </DockPanel>
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5,5,5,5" Background="DarkGray">
+                <TabControl Name="TabControl1" Background="DarkGray">
+                    <TabItem Name="ActiveTabItem" Header="Active" Width="180" Height="30">
+                        <dataGrids:WorkItemsGrid x:Name="ActiveWorkItemsGrid"></dataGrids:WorkItemsGrid>
+                    </TabItem>
+                    <TabItem Name="OnHoldTabItem" Header="On Hold" Width="180" Height="30">
+                        <dataGrids:WorkItemsGrid x:Name="OnHoldWorkItemsGrid"></dataGrids:WorkItemsGrid>
+                    </TabItem>
+                    <TabItem Name="IterationWorkItemsTabItem" Visibility="Collapsed" Padding="10,0,10,0" Width="180" Header="Iteration Work Items" Height="30">
+                        <tabs:IterationWorkItemsTab x:Name="IterationWorkItemsTabControl"></tabs:IterationWorkItemsTab>
+                    </TabItem>
+                    <TabItem Name="MyTeamMembersWorkItemsTabItem" Visibility="Collapsed" Padding="10,0,10,0" Width="180" Header="Team Work Items" Height="30">
+                        <tabs:TeamWorkItemsTab x:Name="TeamWorkItemsTabControl"></tabs:TeamWorkItemsTab>
+                    </TabItem>
+                </TabControl>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</Window>

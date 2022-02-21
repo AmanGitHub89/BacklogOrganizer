@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="BacklogOrganizer.UserControls.RichTextEditor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             Loaded="RichTextEditor_OnLoaded"
+             d:DesignHeight="300" d:DesignWidth="400">
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top" Name="FontToolBar">
+                <ToggleButton Command="EditingCommands.ToggleBold" Name="BoldButton"  ToolTip="Bold">
+                    <Image Source="../Resources/BoldIcon.png" Width="16" Height="16" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.ToggleItalic" Name="ItalicButton"  ToolTip="Italic">
+                    <Image Source="../Resources/ItalicIcon.png" Width="16" Height="14" />
+                </ToggleButton>
+                <ToggleButton Command="EditingCommands.ToggleUnderline" Name="UnderlineButton"  ToolTip="Underline">
+                    <Image Source="../Resources/UnderlineIcon.png" Width="16" Height="16" />
+                </ToggleButton>
+                <Separator />
+                <ComboBox Name="FontFamilyComboBox" Width="150" ToolTip="Font Family" SelectionChanged="CmbFontFamily_OnSelectionChanged" />
+                <ComboBox Name="FontSizeComboBox" Width="50" IsEditable="True" ToolTip="Font Size" TextBoxBase.TextChanged="CmbFontSize_OnTextChanged" />
+            </ToolBar>
+            <RichTextBox Name="RickTextBox" FontFamily="Times New Roman" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="RtbEditor_OnSelectionChanged">
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="0"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </DockPanel>
+    </Grid>
+</UserControl>

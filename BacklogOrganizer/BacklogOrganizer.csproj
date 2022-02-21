@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{78884897-9074-4AA4-9CA4-4BE473D857AF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BacklogOrganizer</RootNamespace>
+    <AssemblyName>BacklogOrganizer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BacklogOrganizer.SingleInstance.EntryPoint</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\BacklogOrganizer3.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MarkupConverter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=275ae570975796c6, processorArchitecture=MSIL">
+      <HintPath>..\packages\MarkupConverter.1.0.6\lib\net45\MarkupConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.TeamFoundation.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.WorkItemTracking.Client, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9e7cd3b544a090dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.2.0.0\lib\net40\WpfAnimatedGif.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="SingleInstance\BacklogOrganizerApplication.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Configuration\AppConfiguration.cs" />
+    <Compile Include="Configuration\BacklogOrganizerConfiguration.cs" />
+    <Compile Include="Configuration\TfsConfiguration.cs" />
+    <Compile Include="Reminders\ReminderCard.xaml.cs">
+      <DependentUpon>ReminderCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reminders\RemindersService.cs" />
+    <Compile Include="Reminders\ShowRemindersWindow.xaml.cs">
+      <DependentUpon>ShowRemindersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SingleInstance\BacklogOrganizerTrayIcon.cs" />
+    <Compile Include="SingleInstance\EntryPoint.cs" />
+    <Compile Include="SingleInstance\SingleInstanceManager.cs" />
+    <Compile Include="TfsConnectors\WorkItemRepository\AbstractWorkItemsRepository.cs" />
+    <Compile Include="TfsConnectors\WorkItemRepository\IWorkItemsRepository.cs" />
+    <Compile Include="TfsConnectors\ProjectStructureRepository.cs" />
+    <Compile Include="TfsConnectors\MyWorkItemService.cs" />
+    <Compile Include="TfsConnectors\WorkItemRepository\IterationWorkItemsRepository.cs" />
+    <Compile Include="TfsConnectors\WorkItemRepository\TeamWorkItemsRepository.cs" />
+    <Compile Include="TfsConnectors\WorkItemRepository\MyWorkItemsRepository.cs" />
+    <Compile Include="TfsConnectors\TfsTeamsRepository.cs" />
+    <Compile Include="TfsConnectors\TfsWorkItemsStoreConnector.cs" />
+    <Compile Include="Types\ChildWindow.cs" />
+    <Compile Include="Types\ComboBoxKeyValue.cs" />
+    <Compile Include="Types\ProjectStructure.cs" />
+    <Compile Include="Types\BacklogOrganizerColors.cs" />
+    <Compile Include="Reminders\Reminder.cs" />
+    <Compile Include="Types\SelectedTeamMembers.cs" />
+    <Compile Include="Types\TfsWorkItem.cs" />
+    <Compile Include="UserControls\DataGrids\CommonWorkItemGridActions.xaml.cs">
+      <DependentUpon>CommonWorkItemGridActions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataGrids\IterationWorkItemsGrid.xaml.cs">
+      <DependentUpon>IterationWorkItemsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RichTextEditor.xaml.cs">
+      <DependentUpon>RichTextEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Tabs\IterationWorkItemsTab.xaml.cs">
+      <DependentUpon>IterationWorkItemsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataGrids\TeamWorkItemsGrid.xaml.cs">
+      <DependentUpon>TeamWorkItemsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Tabs\TeamWorkItemsTab.xaml.cs">
+      <DependentUpon>TeamWorkItemsTab.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\TextInputControl.xaml.cs">
+      <DependentUpon>TextInputControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ThreeDButton.xaml.cs">
+      <DependentUpon>ThreeDButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataGrids\WorkItemGridActions.xaml.cs">
+      <DependentUpon>WorkItemGridActions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\DataGrids\WorkItemsGrid.xaml.cs">
+      <DependentUpon>WorkItemsGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\AsyncWorker.cs" />
+    <Compile Include="Utilities\LatestVersionChecker.cs" />
+    <Compile Include="Utilities\Logger.cs" />
+    <Compile Include="Utilities\MessageBoxHelper.cs" />
+    <Compile Include="Utilities\UtilityMethods.cs" />
+    <Compile Include="Windows\AboutBacklogOrganizer.xaml.cs">
+      <DependentUpon>AboutBacklogOrganizer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddRemoveItemsWindow.xaml.cs">
+      <DependentUpon>AddRemoveItemsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddTaskWindow.xaml.cs">
+      <DependentUpon>AddTaskWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\EditWorkItemWindow.xaml.cs">
+      <DependentUpon>EditWorkItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ListInputWindow.xaml.cs">
+      <DependentUpon>ListInputWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reminders\SetReminderWindow.xaml.cs">
+      <DependentUpon>SetReminderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Reminders\ReminderCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reminders\ShowRemindersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataGrids\CommonWorkItemGridActions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataGrids\IterationWorkItemsGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Tabs\IterationWorkItemsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Tabs\TeamWorkItemsTab.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TextInputControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ThreeDButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AboutBacklogOrganizer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ListInputWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="SingleInstance\BacklogOrganizerApplication.xaml.cs">
+      <DependentUpon>BacklogOrganizerApplication.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="UserControls\RichTextEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataGrids\TeamWorkItemsGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataGrids\WorkItemGridActions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\DataGrids\WorkItemsGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddRemoveItemsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddTaskWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\EditWorkItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reminders\SetReminderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ToggleIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\SettingsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RefreshIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TFSIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\EditIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BoldIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ItalicIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UnderlineIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DeleteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CollapseAll.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\LeftIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\RightIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\BacklogOrganizer3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ReminderIcon.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\InformationIcon.png" />
+    <None Include="Configuration\Read Me.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <Content Include="Reminders\Sounds\alien-ship.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\angry-monkey.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\bird-song.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\beeps.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\alarm-clock.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\foghorn.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\harp-strumming.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\heavy-metal.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\marching-robots.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reminders\Sounds\nuclear-warning.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Resources\ReminderGif3.gif" />
+    <Resource Include="Resources\ReminderGif2.gif" />
+    <Resource Include="Resources\ReminderGif.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

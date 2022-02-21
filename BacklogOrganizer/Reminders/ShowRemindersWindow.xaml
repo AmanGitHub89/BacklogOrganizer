@@ -1,0 +1,19 @@
+﻿<Window x:Class="BacklogOrganizer.Reminders.ShowRemindersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:reminders="clr-namespace:BacklogOrganizer.Reminders"
+        mc:Ignorable="d"
+        Loaded="ShowRemindersWindow_OnLoaded"
+        Closing="ShowRemindersWindow_OnClosing"
+        Closed="ShowRemindersWindow_OnClosed"
+        Title="Reminders" Height="180" Width="400">
+    <Grid Background="LightGray">
+        <DockPanel Margin="10">
+            <StackPanel Name="ReminderCardsPanel">
+                <reminders:ReminderCard Height="130"></reminders:ReminderCard>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</Window>

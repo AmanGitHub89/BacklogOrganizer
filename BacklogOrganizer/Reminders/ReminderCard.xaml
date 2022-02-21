@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="BacklogOrganizer.Reminders.ReminderCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:gif="http://wpfanimatedgif.codeplex.com"
+             mc:Ignorable="d" 
+             Loaded="ReminderCard_OnLoaded"
+             d:DesignHeight="120" d:DesignWidth="400">
+    <Grid>
+        <DockPanel Margin="5">
+            <Border BorderBrush="DarkGray" BorderThickness="1" CornerRadius="15" Background="DarkGray">
+                <DockPanel ClipToBounds="True">
+                    <DockPanel Dock="Left" Margin="10,5,5,5">
+                        <DockPanel Dock="Top" VerticalAlignment="Top">
+                            <StackPanel>
+                                <DockPanel>
+                                    <DockPanel Name="TaskTypeAndIdPanel" Margin="0,0,10,0">
+                                        <TextBlock Name="WorkItemType" Text="Task" VerticalAlignment="Center"/>
+                                        <TextBlock VerticalAlignment="Center" Margin="5,0,0,0"><Hyperlink Name="WorkItemIdLink" Click="WorkItemIdLink_OnClick">546230</Hyperlink></TextBlock>
+                                    </DockPanel>
+                                    <Border Name="MissedReminderPanel" HorizontalAlignment="Left" BorderBrush="red" BorderThickness="1" CornerRadius="15" Background="red">
+                                        <DockPanel Dock="Bottom"  VerticalAlignment="Bottom">
+                                            <Label Content="Missed at :"></Label>
+                                            <Label Name="MissedReminderDateTime" Padding="0,5,5,5" Content="27 June, 07:34 PM"></Label>
+                                        </DockPanel>
+                                    </Border>
+                                </DockPanel>
+                                <TextBlock Name="TitleText" HorizontalAlignment="Left" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" MaxWidth="260">Remind me about something. Remind me about something. Remind me</TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                        <DockPanel Name="DescriptionSection" HorizontalAlignment="Left" Dock="Bottom" Margin="0,0,0,5" VerticalAlignment="Bottom">
+                            <TextBlock Name="DescriptionText" VerticalAlignment="Center" TextWrapping="Wrap" MaxWidth="260">Remind me about something. Remind me about something. Remind me</TextBlock>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel Dock="Right" Margin="0,5,5,5" HorizontalAlignment="Right">
+                        <DockPanel Dock="Top">
+                            <Button Name="SnoozeButton" Click="SnoozeButton_OnClick" Cursor="Hand" BorderThickness="0" Background="Transparent">
+                                <Image Name="ClockAnimatedImage" Width="60" Height="33" gif:ImageBehavior.AnimatedSource="../Resources/ReminderGif2.gif"></Image>
+                            </Button>
+                        </DockPanel>
+                        <DockPanel Dock="Bottom" VerticalAlignment="Bottom">
+                            <StackPanel>
+                                <Button Name="EditButton" Width="20" Height="20" Margin="0" Background="Transparent" ToolTip="Edit" Padding="0,0,0,0" BorderThickness="0"
+                                        HorizontalAlignment="Center" Cursor="Hand" Click="EditButton_OnClick">
+                                    <Image Source="../Resources/EditIcon.png" RenderOptions.BitmapScalingMode="Fant" Width="20" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                </Button>
+                                <TextBlock HorizontalAlignment="Center" Margin="0,10,0,5">
+                                    <Hyperlink Click="CloseButton_OnClick">Dismiss</Hyperlink>
+                                </TextBlock>
+                            </StackPanel>
+                        </DockPanel>
+                    </DockPanel>
+                </DockPanel>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

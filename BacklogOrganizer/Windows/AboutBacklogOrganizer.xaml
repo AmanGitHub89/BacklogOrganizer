@@ -1,0 +1,76 @@
+﻿<types:FixedSizeChildWindow x:Class="BacklogOrganizer.Windows.AboutBacklogOrganizer"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:types="clr-namespace:BacklogOrganizer.Types"
+                            mc:Ignorable="d"
+                            Title="About Backlog Organizer" Height="300" Width="560">
+
+    <Grid Background="LightGray">
+        <DockPanel Background="DarkGray" Margin="10">
+            <DockPanel Margin="10">
+                <StackPanel>
+                    <DockPanel>
+                        <BulletDecorator VerticalAlignment="Center" Margin="0,0,10,0">
+                            <BulletDecorator.Bullet>
+                                <Ellipse Height="8" Width="8" Fill="Black"/>
+                            </BulletDecorator.Bullet>
+                        </BulletDecorator>
+                        <TextBlock Text="Backlog Organizer makes it easy to keep track of all your assigned work items at one place." TextWrapping="Wrap" VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Margin="0,15,0,0">
+                        <BulletDecorator VerticalAlignment="Center" Margin="0,0,10,0">
+                            <BulletDecorator.Bullet>
+                                <Ellipse Height="8" Width="8" Fill="Black"/>
+                            </BulletDecorator.Bullet>
+                        </BulletDecorator>
+                        <TextBlock Text="The idea is to keep your active tab green as much as possible." TextWrapping="Wrap" VerticalAlignment="Center" />
+                    </DockPanel>
+                    <DockPanel Margin="0,15,0,0">
+                        <BulletDecorator VerticalAlignment="Center" Margin="0,0,10,0">
+                            <BulletDecorator.Bullet>
+                                <Ellipse Height="8" Width="8" Fill="Black"/>
+                            </BulletDecorator.Bullet>
+                        </BulletDecorator>
+                        <TextBlock Text="When not actively working on a work item, move it to 'On hold' tab." TextWrapping="Wrap" />
+                    </DockPanel>
+                    <DockPanel Margin="0,50,0,0">
+                        <StackPanel>
+                            <DockPanel>
+                                <Rectangle Height="20" Width="20" HorizontalAlignment="Left">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{x:Static types:BacklogOrganizerColors.RedColor}" />
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <TextBlock Margin="5,0,0,0" Text="Indicates that a work item does not have any 'Active' task under it." TextWrapping="Wrap" />
+                            </DockPanel>
+                            <DockPanel Margin="0,15,0,0">
+                                <Rectangle Height="20" Width="20" HorizontalAlignment="Left">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{x:Static types:BacklogOrganizerColors.YellowColor}" />
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <TextBlock Margin="5,0,0,0" Text="Indicates that an Active task under the work item has not been updated in 24 hours." TextWrapping="Wrap" />
+                            </DockPanel>
+                            <DockPanel Margin="0,15,0,0">
+                                <Rectangle Height="20" Width="20" HorizontalAlignment="Left">
+                                    <Rectangle.Style>
+                                        <Style TargetType="Rectangle">
+                                            <Setter Property="Fill" Value="{x:Static types:BacklogOrganizerColors.GreenColor}" />
+                                        </Style>
+                                    </Rectangle.Style>
+                                </Rectangle>
+                                <TextBlock Margin="5,0,0,0" Text="Indicates that all Active tasks under the work item are up to date." TextWrapping="Wrap" />
+                            </DockPanel>
+                        </StackPanel>
+                    </DockPanel>
+                </StackPanel>
+            </DockPanel>
+        </DockPanel>
+    </Grid>
+</types:FixedSizeChildWindow>

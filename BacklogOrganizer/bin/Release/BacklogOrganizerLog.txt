@@ -1,0 +1,12 @@
+LOG_MESSAGE_START 
+ {
+  "Type": "WARN",
+  "Date": "20.02.2022 23:46:03.019",
+  "Message": "Could not load team tool config file. The network name cannot be found.\r\n",
+  "Data": "",
+  "Exception": "",
+  "InnerException": "",
+  "Comment": ""
+} 
+ LOG_MESSAGE_END 
+ 

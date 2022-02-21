@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="BacklogOrganizer.UserControls.DataGrids.TeamWorkItemsGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:types="clr-namespace:BacklogOrganizer.Types"
+             xmlns:dataGrids="clr-namespace:BacklogOrganizer.UserControls.DataGrids"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid Name="WorkItemsDataGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" 
+                          AutoGenerateColumns="False" ItemsSource="{Binding}" GridLinesVisibility="None"
+                          CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" CanUserResizeColumns="True" CanUserResizeRows="True" CanUserSortColumns="False">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="" Width="30">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Expander Visibility="{Binding ExpanderVisibility}" IsExpanded="{Binding Path=IsExpanded, Mode=OneWay}" Expanded="Expander_OnExpanded" Collapsed="Expander_OnCollapsed">
+                            </Expander>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridHyperlinkColumn  Header="Id" Binding="{Binding Id}" IsReadOnly="True">
+                    <DataGridHyperlinkColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Margin" Value="{Binding LeftMargin}" />
+                            <Setter Property="Tag" Value="{Binding Url}" />
+                            <EventSetter Event="Hyperlink.Click" Handler="OnWorkItemIdClickHandler"/>
+                        </Style>
+                    </DataGridHyperlinkColumn.ElementStyle>
+                </DataGridHyperlinkColumn>
+                <DataGridTextColumn Header="Name" Binding="{Binding DisplayUserName}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="State" Binding="{Binding State}" />
+                <DataGridTemplateColumn Header="Actions">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <dataGrids:CommonWorkItemGridActions/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Iteration" Binding="{Binding IterationPath}" />
+                <DataGridTextColumn Header="Title" Binding="{Binding Path=Title, Mode=OneWay}">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+                            <Setter Property="ToolTip" Value="{Binding Text, RelativeSource={RelativeSource self}}"/>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HasAnActiveTask}" Value="True">
+                            <Setter Property="Background" Value="{x:Static types:BacklogOrganizerColors.GreenColor}"></Setter>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding HasAnActiveTask}" Value="False">
+                            <Setter Property="Background" Value="{x:Static types:BacklogOrganizerColors.RedColor}"></Setter>
+                        </DataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding HasAnActiveTask}" Value="True" />
+                                <Condition Binding="{Binding ActiveChildTasksAreUpdated}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Background" Value="{x:Static types:BacklogOrganizerColors.YellowColor}" />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="ToolTip" Value="{Binding ToolTipText}"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                            <Setter Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground"
+                                    Value="{DynamicResource
+                                   {x:Static SystemColors.ControlTextBrushKey}}"/>
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="Transparent"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>

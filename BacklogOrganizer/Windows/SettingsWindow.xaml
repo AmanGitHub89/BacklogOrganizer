@@ -1,0 +1,115 @@
+﻿<types:FixedSizeChildWindow x:Class="BacklogOrganizer.Windows.SettingsWindow"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:types="clr-namespace:BacklogOrganizer.Types"
+                            xmlns:userControls="clr-namespace:BacklogOrganizer.UserControls"
+                            xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                            mc:Ignorable="d"
+                            Loaded="SettingsWindow_OnLoaded"
+                            Closing="SettingsWindow_OnClosing"
+                            Title="Settings" Height="640" Width="680">
+    <Grid Background="LightGray">
+        <DockPanel Background="DarkGray" Margin="10">
+            <StackPanel HorizontalAlignment="Center" Width="600" VerticalAlignment="Center">
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <DockPanel>
+                        <Label Content="TFS Username"></Label>
+                        <TextBox Name="TfsUsernameTextBox" IsEnabled="False" Width="300" HorizontalAlignment="Right"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="TFS Server"></Label>
+                        <TextBox Name="TfsServerTextBox" Width="300" HorizontalAlignment="Right"></TextBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label Name="TfsServerConnectionErrorLabel" Content="Connection to TFS was unsuccessful." Foreground="Red" Background="NavajoWhite" HorizontalAlignment="Right" Width="300"></Label>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="Included TFS Project Collections (, separated)"></Label>
+                        <DockPanel HorizontalAlignment="Right">
+                            <TextBox Name="IncludedProjectCollectionsTextBox" ToolTip="{Binding Text, RelativeSource={RelativeSource self}}" IsEnabled="False" Width="267" ToolTipService.ShowOnDisabled="true"></TextBox>
+                            <userControls:ThreeDButton x:Name="IncludedCollectionsEditButton" Click="IncludedCollectionsEditButton_OnClick" Margin="5,0,0,0" VerticalAlignment="Center" ToolTip="Edit Team Members">
+                                <Image Source="../Resources/EditIcon.png" Margin="2"></Image>
+                            </userControls:ThreeDButton>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="Included Project Types (, separated)"></Label>
+                        <DockPanel HorizontalAlignment="Right">
+                            <TextBox Name="IncludedProjectTypesTextBox" ToolTip="{Binding Text, RelativeSource={RelativeSource self}}" IsEnabled="False" Width="267" ToolTipService.ShowOnDisabled="true"></TextBox>
+                            <userControls:ThreeDButton x:Name="IncludedProjectsEditButton" Click="IncludedProjectsEditButton_OnClick" Margin="5,0,0,0" VerticalAlignment="Center" ToolTip="Edit Team Members">
+                                <Image Source="../Resources/EditIcon.png" Margin="2"></Image>
+                            </userControls:ThreeDButton>
+                        </DockPanel>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" Height="1" Margin="0,10,0,10" Background="Gray"></StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <DockPanel>
+                        <Label Content="Area Path for new tasks"></Label>
+                        <TextBox Name="NewTasksAreaPathTextBox" Width="300" HorizontalAlignment="Right"></TextBox>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="Excluded work item types (, separated)"></Label>
+                        <DockPanel HorizontalAlignment="Right">
+                            <TextBox Name="ExcludedWorkItemTypesTextBox" ToolTip="{Binding Text, RelativeSource={RelativeSource self}}" IsEnabled="False" Width="267" ToolTipService.ShowOnDisabled="true"></TextBox>
+                            <userControls:ThreeDButton x:Name="ExcludedWorkItemTypesEditButton" Click="ExcludedWorkItemTypesEditButton_OnClick" Margin="5,0,0,0" VerticalAlignment="Center" ToolTip="Edit Team Members">
+                                <Image Source="../Resources/EditIcon.png" Margin="2"></Image>
+                            </userControls:ThreeDButton>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="Excluded work item states (, separated)"></Label>
+                        <DockPanel HorizontalAlignment="Right">
+                            <TextBox Name="ExcludedWorkItemStatesTextBox" ToolTip="{Binding Text, RelativeSource={RelativeSource self}}" IsEnabled="False" Width="267" ToolTipService.ShowOnDisabled="true"></TextBox>
+                            <userControls:ThreeDButton x:Name="ExcludedWorkItemStatesEditButton" Click="ExcludedWorkItemStatesEditButton_OnClick" Margin="5,0,0,0" VerticalAlignment="Center" ToolTip="Edit Team Members">
+                                <Image Source="../Resources/EditIcon.png" Margin="2"></Image>
+                            </userControls:ThreeDButton>
+                        </DockPanel>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <Label Content="Exclude work item under Area Paths (, separated)"></Label>
+                        <DockPanel HorizontalAlignment="Right">
+                            <TextBox Name="ExcludedWorkItemAreaPathsTextBox" ToolTip="{Binding Text, RelativeSource={RelativeSource self}}" IsEnabled="False" Width="267" ToolTipService.ShowOnDisabled="true"></TextBox>
+                            <userControls:ThreeDButton x:Name="ExcludedWorkItemAreaPathsEditButton" Click="ExcludedWorkItemAreaPathsEditButton_OnClick" Margin="5,0,0,0" VerticalAlignment="Center" ToolTip="Edit Team Members">
+                                <Image Source="../Resources/EditIcon.png" Margin="2"></Image>
+                            </userControls:ThreeDButton>
+                        </DockPanel>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" Height="1" Margin="0,10,0,10" Background="Gray"></StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <DockPanel>
+                        <Label Content="Duration to mark work item not updated (24-48 H)"></Label>
+                        <xctk:IntegerUpDown Name="WorkItemNotUpdatedDuration" Width="300" Value="24" HorizontalAlignment="Right" Text="5" Minimum="24" Maximum="48" Padding="10,0,10,0"></xctk:IntegerUpDown>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" Height="1" Margin="0,10,0,10" Background="Gray"></StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <DockPanel>
+                        <Label Content="Reminder Snooze duration (5-30 minutes)"></Label>
+                        <xctk:IntegerUpDown Name="ReminderSnoozeDuration" Width="300" Value="5" HorizontalAlignment="Right" Text="5" Minimum="5" Maximum="30" Padding="10,0,10,0"></xctk:IntegerUpDown>
+                    </DockPanel>
+                    <DockPanel Margin="0,5,0,0">
+                        <CheckBox Name="PlayReminderSoundCheckBox" Content="Play reminder sound?" VerticalAlignment="Center" Checked="PlayReminderSoundCheckBox_OnCheckChanged" Unchecked="PlayReminderSoundCheckBox_OnCheckChanged"></CheckBox>
+                        <ComboBox Name="ReminderSoundComboBox" Width="300" HorizontalAlignment="Right" Height="28"></ComboBox>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" Height="1" Margin="0,10,0,10" Background="Gray"></StackPanel>
+                <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                    <DockPanel>
+                        <CheckBox Name="ShowIterationWorkItemsTabCheckBox" Content="Show Iteration work items tab?" Margin="0,0,0,10"></CheckBox>
+                    </DockPanel>
+                    <DockPanel>
+                        <CheckBox Name="ShowTeamMembersWorkItemsTabCheckBox" Content="Show Team Members work items tab?"></CheckBox>
+                    </DockPanel>
+                    <DockPanel Margin="0,20,0,0">
+                        <Label Content="Clear TFS projects cache? (for all projects)" VerticalAlignment="Center"></Label>
+                        <Button Name="ClearProjectsCacheButton" Content="Clear TFS projects Cache" Height="30" Click="ClearProjectsCacheButton_OnClick" Padding="5,0,5,0" HorizontalAlignment="Right" VerticalAlignment="Center"></Button>
+                    </DockPanel>
+                </StackPanel>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</types:FixedSizeChildWindow>
